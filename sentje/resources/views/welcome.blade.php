@@ -43,7 +43,9 @@
                 </div>
 
                 <div>
-                <a href="http://a00b99c0.ngrok.io/request.php"><button type="button" class="btn btn-primary">
+                {{ env('MOLLIE_KEY', 'NGROK_ID_NOT_FOUND') }}
+                {{ env('NGROK_ID', 'NGROK_ID_NOT_FOUND') }}
+                <a href="http://c6fea7ca.ngrok.io/request.php"><button type="button" class="btn btn-primary">
                 Pay!</button></a>
                 </div>
             </div>

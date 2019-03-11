@@ -3,6 +3,7 @@
 
 use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\Types\PaymentMethod;
+use Dotenv\Dotenv;
       
 /*
  * How to prepare a new payment with the Mollie API.
@@ -14,6 +15,13 @@ try {
      * See: https://www.mollie.com/dashboard/developers/api-keys
      */
     require "../initialize.php";
+
+    
+    /*
+     * Initialize the .env file
+     */
+    $dotenv = new Dotenv(__DIR__ . "/..");
+    $dotenv->load();
 
 
     /*
@@ -59,8 +67,8 @@ try {
         ],
         "method" => PaymentMethod::IDEAL,
         "description" => "Order #{$orderId}",
-        "redirectUrl" => "http://a00b99c0.ngrok.io//03-return-page.php?order_id={$orderId}", //replaced with the ngrok link
-        "webhookUrl" => "http://a00b99c0.ngrok.io/02-webhook-verification.php", //replaced with the ngrok link
+        "redirectUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io//03-return-page.php?order_id={$orderId}", //replaced with the ngrok link
+        "webhookUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io/02-webhook-verification.php", //replaced with the ngrok link
         "metadata" => [
             "order_id" => $orderId,
         ],
@@ -95,5 +103,3 @@ try {
     
     
     
-
-
