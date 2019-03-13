@@ -1,9 +1,7 @@
 <?php 
     
-
 use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\Types\PaymentMethod;
-use Dotenv\Dotenv;
       
 /*
  * How to prepare a new payment with the Mollie API.
@@ -15,14 +13,6 @@ try {
      * See: https://www.mollie.com/dashboard/developers/api-keys
      */
     require "../initialize.php";
-
-    
-    /*
-     * Initialize the .env file
-     */
-    $dotenv = new Dotenv(__DIR__ . "/..");
-    $dotenv->load();
-
 
     /*
      * First, let the customer pick the bank in a simple HTML form. This step is actually optional.
