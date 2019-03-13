@@ -15,33 +15,18 @@ try {
     require "../initialize.php";
 
     /*
-     * First, let the customer pick the bank in a simple HTML form. This step is actually optional.
-     */
-    if ($_SERVER["REQUEST_METHOD"] != "POST") {
-        $method = $mollie->methods->get(PaymentMethod::IDEAL, ["include" => "issuers"]);
-
-        echo '<form method="post">Select your bank: <select name="issuer">';
-
-        foreach ($method->issuers() as $issuer) {
-            echo '<option value=' . htmlspecialchars($issuer->id) . '>' . htmlspecialchars($issuer->name) . '</option>';
-        }
-
-        echo '<option value="">or select later</option>';
-        echo '</select><button>OK</button></form>';
-        exit;
-    }
-
-    /*
      * Generate a unique order id for this example. It is important to include this unique attribute
      * in the redirectUrl (below) so a proper return page can be shown to the customer.
      */
     $orderId = time();
+
     /*
      * Determine the url parts to these example files.
      */
     $protocol = isset($_SERVER['HTTPS']) && strcasecmp('off', $_SERVER['HTTPS']) !== 0 ? "https" : "http";
     $hostname = $_SERVER['HTTP_HOST'];
     $path = dirname(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : $_SERVER['PHP_SELF']);
+
     /*
      * Payment parameters:
      *   amount        Amount in EUROs. This example creates a € 10,- payment.
@@ -63,33 +48,25 @@ try {
             "order_id" => $orderId,
         ],
     ]);
+
     /*
      * In this example we store the order with its payment status in a database.
      */
     database_write($orderId, $payment->status);
+
     /*
      * Send the customer off to complete the payment.
      * This request should always be a GET, thus we enforce 303 http response code
      */
-
     header("Location: " . $payment->getCheckoutUrl(), true, 303);
     } catch (ApiException $e) {
     echo "API call failed: " . htmlspecialchars($e->getMessage());
 }
 
-    function database_write($orderId, $status)
-    {
-        $orderId = intval($orderId);
-        $database = dirname(__FILE__) . "/orders/order-{$orderId}.txt"; //add database here.
+function database_write($orderId, $status)
+{
+    $orderId = intval($orderId);
+    $database = dirname(__FILE__) . "/orders/order-{$orderId}.txt"; //add database here.
     
-        file_put_contents($database, $status);
-    }
-  
-    
-        
-
-
-
-    
-    
-    
+    file_put_contents($database, $status);
+}

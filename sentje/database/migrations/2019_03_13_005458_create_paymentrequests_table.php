@@ -17,6 +17,7 @@ class CreatePaymentrequestsTable extends Migration
             $table->increments('id');
             $table->string('owner_id');
             $table->decimal('amount');
+            $table->text('description');
             $table->timestamp('created_at');
         });
     }

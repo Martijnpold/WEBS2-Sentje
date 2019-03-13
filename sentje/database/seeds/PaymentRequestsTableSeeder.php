@@ -11,6 +11,25 @@ class PaymentRequestsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('payment_requests')->insert([
+            'id' => 1,
+            'owner_id' => 1,
+            'description' => 'Van die ene keer toen we naar de club gingen',
+            'amount' => 26.40,
+        ]);
+
+        DB::table('payment_requests')->insert([
+            'id' => 2,
+            'owner_id' => 1,
+            'description' => 'Eten',
+            'amount' => 100.00,
+        ]);
+        
+        DB::table('payment_requests')->insert([
+            'id' => 3,
+            'owner_id' => 2,
+            'description' => 'Van een andere user',
+            'amount' => 30.00,
+        ]);
     }
 }

@@ -26,17 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
-        $requests = PaymentRequest::where('owner_id', $user_id)->get();
-        echo '<table style="width:100%">';
-        foreach($requests as $request) {
-            echo '<tr>';
-            echo '<td>' . $request->id . '</td>';
-            echo '<td>' . $request->owner_id . '</td>';
-            echo '<td>' . $request->amount . '</td>';
-            echo '<td>' . $request->created_at . '</td>';
-            echo '</tr>';
-        }
-        echo '</table>';
-        return view('home');
+        $payment_requests = PaymentRequest::where('owner_id', $user_id)->get();
+        return view('home', ['payment_requests' => $payment_requests]);
     }
 }
