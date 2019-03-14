@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\PaymentRequest;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,6 +27,6 @@ class HomeController extends Controller
     {
         $user_id = Auth::user()->id;
         $payment_requests = PaymentRequest::where('owner_id', $user_id)->get();
-        return view('home', ['payment_requests' => $payment_requests]);
+        return view('dashboard', ['payment_requests' => $payment_requests]);
     }
 }
