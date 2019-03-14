@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+Route::redirect('/', '/home');
+
+Route::get('/home', function () {
     return view('home');
 });
 
