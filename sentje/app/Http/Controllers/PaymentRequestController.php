@@ -17,7 +17,7 @@ class PaymentRequestController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +27,7 @@ class PaymentRequestController extends Controller
     {
         $user_id = Auth::user()->id;
         $payment_requests = PaymentRequest::where('owner_id', $user_id)->get();
-        return view('dashboard', ['payment_requests' => $payment_requests]);
+        return view('paymentrequests/index', ['payment_requests' => $payment_requests]);
     }
 
     /**
@@ -59,7 +59,13 @@ class PaymentRequestController extends Controller
      */
     public function show($id)
     {
-        //
+        $user_id = Auth::user()->id;
+        $payment_request = PaymentRequest::where('owner_id', $user_id)->where('id', $id)->first();
+        if($payment_request != null) {
+            return view('paymentrequests/show', ['payment_request' => $payment_request]);
+        } else {
+            return redirect('payments');
+        }
     }
 
     /**
