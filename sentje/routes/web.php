@@ -12,11 +12,14 @@
 */
 
 Route::redirect('/', '/home');
+Route::redirect('/post-login', '/payments');
 
 Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+Route::resource('/payments', 'PaymentRequestController')->except([
+    'edit', 'update'
+]);;
 
 Auth::routes();
