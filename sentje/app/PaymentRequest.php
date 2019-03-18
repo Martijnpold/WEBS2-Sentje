@@ -19,4 +19,15 @@ class PaymentRequest extends Model
         }
         return $payment_requests;
     }
+
+    static function get_all_on_account($owner_id, $account_id) {
+        $owned_requests = PaymentRequest::get_all_owned($owner_id);
+        $account_requests = [];
+        foreach($owned_requests as $owned_request) {
+            if($owned_request->payment_account_id == $account_id) {
+                $account_requests[] = $owned_request;
+            }
+        }
+        return $account_requests;
+    }
 }

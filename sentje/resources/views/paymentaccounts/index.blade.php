@@ -23,11 +23,13 @@
                     <td>#</td>
                     <td>name</td>
                     <td>balance</td>
-                    @foreach ($payment_requests as $request)
+                    <td></td>
+                    @foreach ($payment_accounts as $account)
                     <tr>
-                    <td>{{ $request->id }}</td>
-                    <td>{{ $request->name }}</td>
-                    <td>{{ $request->balance }}</td>
+                    <td>{{ $account->id }}</td>
+                    <td>{{ $account->name }}</td>
+                    <td>{{ $account->balance }}</td>
+                    <td><a href="{{ route('paymentaccounts.show', $account->id) }}">Requests</a></td>
                     </tr>
                     @endforeach
                     </table>

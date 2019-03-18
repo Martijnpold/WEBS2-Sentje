@@ -50,7 +50,10 @@ class PaymentAccountController extends Controller
      */
     public function show($id)
     {
-        //
+        $user_id = Auth::user()->id;
+        $payment_account = PaymentAccount::where('owner_id', $user_id)->get()->first();
+        $payment_requests = PaymentRequest::get_all_on_account($user_id, $id);
+        return view('paymentaccounts.show', ['payment_account' => $payment_account, 'payment_requests' => $payment_requests]);
     }
 
     /**

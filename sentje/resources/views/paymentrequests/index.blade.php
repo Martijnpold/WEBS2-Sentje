@@ -21,13 +21,14 @@
                     <table style="width:100%">
                     <tr>
                     <td>#</td>
-                    <td>bedrag</td>
-                    <td>omschrijving</td>
+                    <td>amount</td>
+                    <td>description</td>
                     @foreach ($payment_requests as $request)
                     <tr>
                     <td>{{ $request->id }}</td>
                     <td>{{ $request->amount }}</td>
                     <td>{{ $request->description }}</td>
+                    <td><a href="{{ route('payments.show', $request->id) }}">Details</a></td>
                     </tr>
                     @endforeach
                     </table>

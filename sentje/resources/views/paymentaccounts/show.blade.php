@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Payment #{{ $payment_request->id }}</div>
+                <div class="card-header">Payment Account: {{ $payment_account->name }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -23,11 +23,15 @@
                     <td>#</td>
                     <td>amount</td>
                     <td>description</td>
+                    <td></td>
+                    @foreach ($payment_requests as $request)
                     <tr>
-                    <td>{{ $payment_request->id }}</td>
-                    <td>{{ $payment_request->amount }}</td>
-                    <td>{{ $payment_request->description }}</td>
+                    <td>{{ $request->id }}</td>
+                    <td>{{ $request->amount }}</td>
+                    <td>{{ $request->description }}</td>
+                    <td><a href="{{ route('payments.show', $request->id) }}">Details</a></td>
                     </tr>
+                    @endforeach
                     </table>
                 </div>
             </div>
