@@ -22,4 +22,8 @@ Route::resource('/payments', 'PaymentRequestController')->except([
     'edit', 'update'
 ]);;
 
+Route::resource('/paymentaccounts', 'PaymentAccountController')->except([
+    'edit', 'update'
+]);;
+
 Auth::routes();

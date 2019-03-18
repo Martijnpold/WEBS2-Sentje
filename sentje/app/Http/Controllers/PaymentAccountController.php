@@ -7,18 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\PaymentAccount;
 use App\PaymentRequest;
 
-class PaymentRequestController extends Controller
+class PaymentAccountController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +17,8 @@ class PaymentRequestController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
-        $payment_requests = PaymentRequest::get_all_owned($user_id);
-        return view('paymentrequests.index', ['payment_requests' => $payment_requests]);
+        $payment_accounts = PaymentAccount::where('owner_id', $user_id)->get();
+        return view('paymentaccounts.index', ['payment_accounts' => $payment_accounts]);
     }
 
     /**
@@ -38,7 +28,7 @@ class PaymentRequestController extends Controller
      */
     public function create()
     {
-        return view('paymentrequests.create');
+        //
     }
 
     /**
@@ -60,14 +50,7 @@ class PaymentRequestController extends Controller
      */
     public function show($id)
     {
-        $user_id = Auth::user()->id;
-        $payment_requests = PaymentRequest::get_all_owned($user_id);
-        foreach($payment_requests as $payment_request) {
-            if($payment_request->id == $id) {
-                return view('paymentrequests.show', ['payment_request' => $payment_request]);
-            }
-        }
-        return redirect('payments');
+        //
     }
 
     /**
