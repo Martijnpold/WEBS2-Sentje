@@ -12,7 +12,7 @@
 */
 
 Route::redirect('/', '/home');
-Route::redirect('/post-login', '/payments');
+Route::redirect('/post-login', '/paymentaccounts');
 
 Route::get('/home', function () {
     return view('home');
