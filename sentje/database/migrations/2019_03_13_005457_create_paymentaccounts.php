@@ -15,10 +15,14 @@ class CreatePaymentaccounts extends Migration
     {
         Schema::create('payment_accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('owner_id');
+            $table->unsignedInteger('user_id');
             $table->string('name');
             $table->decimal('balance');
             $table->timestamps();
+        });
+
+        Schema::table('payment_accounts', function($table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -27,4 +27,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function payment_accounts() {
+        return $this->hasMany('App\PaymentAccount')->get();
+    }
+
+    public function payment_requests() {
+        $requests = [];
+        foreach($this->payment_accounts() as $account) {
+            foreach($account->payment_requests() as $req) {
+                $requests[] = $req;
+            }
+        }
+        return $requests;
+    }
 }

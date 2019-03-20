@@ -15,10 +15,14 @@ class CreatePaymentrequestsTable extends Migration
     {
         Schema::create('payment_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('payment_account_id');
+            $table->unsignedInteger('payment_account_id');
             $table->decimal('amount');
             $table->text('description');
             $table->timestamps();
+        });
+        
+        Schema::table('payment_requests', function($table) {
+            $table->foreign('payment_account_id')->references('id')->on('payment_accounts');
         });
     }
 

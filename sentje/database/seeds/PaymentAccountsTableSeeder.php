@@ -13,21 +13,21 @@ class PaymentAccountsTableSeeder extends Seeder
     {
         DB::table('payment_accounts')->insert([
             'id' => 1,
-            'owner_id' => 1,
+            'user_id' => 1,
             'name' => 'Dinner',
             'balance' => 25.50,
         ]);
         
         DB::table('payment_accounts')->insert([
             'id' => 2,
-            'owner_id' => 2,
+            'user_id' => 2,
             'name' => 'Sport',
             'balance' => 65.00,
         ]);
         
         DB::table('payment_accounts')->insert([
             'id' => 3,
-            'owner_id' => 1,
+            'user_id' => 1,
             'name' => 'Advance Payments',
             'balance' => 30.00,
         ]);

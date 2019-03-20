@@ -16,8 +16,8 @@ class PaymentAccountController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->id;
-        $payment_accounts = PaymentAccount::where('owner_id', $user_id)->get();
+        $user = Auth::user();
+        $payment_accounts = $user->payment_accounts();
         return view('paymentaccounts.index', ['payment_accounts' => $payment_accounts]);
     }
 
@@ -50,9 +50,9 @@ class PaymentAccountController extends Controller
      */
     public function show($id)
     {
-        $user_id = Auth::user()->id;
-        $payment_account = PaymentAccount::where('owner_id', $user_id)->get()->first();
-        $payment_requests = PaymentRequest::get_all_on_account($user_id, $id);
+        $user = Auth::user();
+        $payment_account = $user->payment_accounts()->where('id', $id)->first();
+        $payment_requests = $payment_account->payment_requests();
         return view('paymentaccounts.show', ['payment_account' => $payment_account, 'payment_requests' => $payment_requests]);
     }
 

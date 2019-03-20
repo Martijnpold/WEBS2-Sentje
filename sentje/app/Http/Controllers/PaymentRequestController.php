@@ -26,8 +26,8 @@ class PaymentRequestController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->id;
-        $payment_requests = PaymentRequest::get_all_owned($user_id);
+        $user = Auth::user();
+        $payment_requests = $user->payment_requests();
         return view('paymentrequests.index', ['payment_requests' => $payment_requests]);
     }
 
@@ -60,8 +60,8 @@ class PaymentRequestController extends Controller
      */
     public function show($id)
     {
-        $user_id = Auth::user()->id;
-        $payment_requests = PaymentRequest::get_all_owned($user_id);
+        $user = Auth::user();
+        $payment_requests = $user->payment_requests();
         foreach($payment_requests as $payment_request) {
             if($payment_request->id == $id) {
                 return view('paymentrequests.show', ['payment_request' => $payment_request]);
