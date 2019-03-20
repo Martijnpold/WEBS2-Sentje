@@ -23,11 +23,22 @@
                     <td>#</td>
                     <td>amount</td>
                     <td>description</td>
+                    <td></td>
+                    <td></td>
                     @foreach ($payment_requests as $request)
                     <tr>
                     <td>{{ $request->id }}</td>
                     <td>{{ $request->amount }}</td>
                     <td>{{ $request->description }}</td>
+                    <td>
+                    @if ($request->can_be_removed())
+                    <form action="{{ route('payments.destroy', $request->id) }}" method="POST">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    <button>Delete</button>
+                    </form>
+                    @endif
+                    </td>
                     <td><a href="{{ route('payments.show', $request->id) }}">Details</a></td>
                     </tr>
                     @endforeach

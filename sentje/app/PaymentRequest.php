@@ -15,4 +15,8 @@ class PaymentRequest extends Model
     public function payments() {
         return $this->hasMany('App\Payment')->get();
     }
+
+    public function can_be_removed() {
+        return sizeof($this->payments()) == 0;
+    }
 }

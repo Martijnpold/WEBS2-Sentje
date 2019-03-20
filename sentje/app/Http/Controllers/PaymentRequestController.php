@@ -101,6 +101,13 @@ class PaymentRequestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        $request = PaymentRequest::find($id);
+        if($request != null && $request->payment_account()->first()->user()->first()->id == $user->id) {
+            if(sizeof($request->first()->payments()) == 0) { 
+                $request->delete();
+            }
+        }
+        return redirect()->route('paymentaccounts.index');
     }
 }
