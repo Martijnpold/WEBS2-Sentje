@@ -33,6 +33,13 @@
                     @endforeach
                     </table>
                 </div>
+
+                <div class="row justify-content-center">
+                    <a href="{{ route('createrequest.create') }}">
+                        <button type="submit" class="btn btn-primary">New Request</button>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
