@@ -11,4 +11,8 @@ class PaymentRequest extends Model
     public function payment_account() {
         return $this->belongsTo('App\PaymentAccount')->get();
     }
+
+    public function payments() {
+        return $this->hasMany('App\Payment')->get();
+    }
 }
