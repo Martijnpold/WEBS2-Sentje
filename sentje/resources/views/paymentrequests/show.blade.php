@@ -23,13 +23,19 @@
                     <td>#</td>
                     <td>amount</td>
                     <td>description</td>
+                    <td>status</td>
                     <tr>
                     <td>{{ $payment_request->id }}</td>
                     <td>{{ $payment_request->amount }}</td>
                     <td>{{ $payment_request->description }}</td>
+                    <!-- status column needs to be added through mollie.-->
                     </tr>
                     </table>
                 </div>
+                
+
+                
+
             </div>
         </div>
     </div>
