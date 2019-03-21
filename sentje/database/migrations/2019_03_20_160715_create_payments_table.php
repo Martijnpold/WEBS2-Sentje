@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPaymentsTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,6 +17,7 @@ class AddPaymentsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('payment_request_id');
             $table->string('name');
+            $table->boolean('paid');
             $table->timestamps();
         });
         

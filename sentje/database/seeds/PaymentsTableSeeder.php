@@ -14,12 +14,15 @@ class PaymentsTableSeeder extends Seeder
         DB::table('payments')->insert([
             'id' => 1,
             'payment_request_id' => 2,
-            'name' => 'Martijn'
+            'name' => 'Martijn',
+            'paid' => false
         ]);
+        
         DB::table('payments')->insert([
             'id' => 2,
             'payment_request_id' => 2,
-            'name' => 'Yoran'
+            'name' => 'Yoran',
+            'paid' => true
         ]);
     }
 }
