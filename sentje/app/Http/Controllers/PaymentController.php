@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PaymentAccount;
 use App\PaymentRequest;
+use App\Payment;
 
 class PaymentController extends Controller
 {
@@ -29,11 +30,17 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        echo "Id " . $request['request_id'];
-        echo "<br>";
-        echo "Name " . $request['name'];
-        echo "<br>";
-        echo "Selected Currency " . $request['currency'];
+        $id = $request['request_id'];
+        $name = $request['name'];
+        $currency = $request['currency'];
+
+        $payment = new Payment;
+        $payment->name = $name;
+        $payment->payment_request_id = $id;
+        $payment->paid = false;
+        $payment->save();
+
+        echo $payment;
     }
 
     /**
