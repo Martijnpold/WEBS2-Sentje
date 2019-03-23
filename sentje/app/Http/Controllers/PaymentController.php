@@ -64,14 +64,30 @@ class PaymentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Update the specified resource in storage when mollie status changes.
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+        $mollie = new MollieApiClient();
+        $mollie->setApiKey(env('MOLLIE_KEY'));
+        $mollie_payment = $mollie->payments->get($_POST["id"]);
+        $orderId = $payment->metadata->order_id;
+        $payment = Payment::where('id', $orderId)->first();
+    
+        if($payment != null) {
+            $request = $payment->payment_request();
+            $account = $request->payment_account();
+
+            $was_paid = $payment->paid;
+            $payment->paid = $mollie_payment->isPaid();
+            $payment->save();
+
+            if ($mollie_payment->isPaid()) {
+                if(!$was_paid) {
+                    $account->balance += $request->amount;
+                    $acount->save();
+                }
+            }
+        }
     }
 }
