@@ -53,8 +53,8 @@ class PaymentController extends Controller
             ],
             "method" => PaymentMethod::IDEAL,
             "description" => "Order #{$payment->id}",
-            "redirectUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io//03-return-page.php?order_id={$payment->id}", //replaced with the ngrok link
-            "webhookUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io/02-webhook-verification.php", //replaced with the ngrok link
+            "redirectUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io/home?order_id={$payment->id}", //replaced with the ngrok link
+            "webhookUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io/update_payment_status", //replaced with the ngrok link
             "metadata" => [
             "order_id" => $payment->id,
         ],
