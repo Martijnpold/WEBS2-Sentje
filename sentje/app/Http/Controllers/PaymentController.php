@@ -71,7 +71,7 @@ class PaymentController extends Controller
         $mollie = new MollieApiClient();
         $mollie->setApiKey(env('MOLLIE_KEY'));
         $mollie_payment = $mollie->payments->get($_POST["id"]);
-        $orderId = $payment->metadata->order_id;
+        $orderId = $mollie_payment->metadata->order_id;
         $payment = Payment::where('id', $orderId)->first();
     
         if($payment != null) {
@@ -89,5 +89,7 @@ class PaymentController extends Controller
                 }
             }
         }
+        
+        return "Success";
     }
 }
