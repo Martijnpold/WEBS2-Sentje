@@ -51,7 +51,7 @@ class PaymentController extends Controller
                 "currency" => $currency,
                 "value" => number_format($payment_request->amount, 2)
             ],
-            "method" => PaymentMethod::IDEAL,
+            "method" => PaymentMethod::CREDITCARD,
             "description" => "Order #{$payment->id}",
             "redirectUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io//03-return-page.php?order_id={$payment->id}", //replaced with the ngrok link
             "webhookUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io/02-webhook-verification.php", //replaced with the ngrok link
@@ -60,7 +60,7 @@ class PaymentController extends Controller
         ],
         ]);
         
-        header("Location: " . $payment->getCheckoutUrl(), true, 303);
+        return redirect($mollie_payment->getCheckoutUrl());
     }
 
     /**
