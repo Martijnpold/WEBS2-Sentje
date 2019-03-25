@@ -22,8 +22,9 @@ Route::resource('/payments', 'PaymentRequestController')->except([
     'edit', 'update'
 ]);;
 
+Route::post('/update_payment_status', ['uses' => 'PaymentController@update']);
 Route::resource('/pay', 'PaymentController')->only([
-    'show', 'update', 'store'
+    'show', 'store'
 ]);;
 
 Route::resource('/paymentaccounts', 'PaymentAccountController')->except([
