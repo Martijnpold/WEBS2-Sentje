@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class PaymentsTableSeeder extends Seeder
 {
@@ -14,15 +15,19 @@ class PaymentsTableSeeder extends Seeder
         DB::table('payments')->insert([
             'id' => 1,
             'payment_request_id' => 2,
-            'name' => 'Martijn',
-            'paid' => false
+            'name' => encrypt('Martijn'),
+            'paid' => false,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         
         DB::table('payments')->insert([
             'id' => 2,
             'payment_request_id' => 2,
-            'name' => 'Yoran',
-            'paid' => true
+            'name' => encrypt('Yoran'),
+            'paid' => true,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
     }
 }

@@ -28,7 +28,7 @@
                     @foreach ($payment_requests as $request)
                     <tr>
                     <td>{{ $request->id }}</td>
-                    <td>{{ $request->amount }}</td>
+                    <td>{{ '€ ' . $request->amount }}</td>
                     <td>{{ $request->description }}</td>
                     <td>
                     @if ($request->can_be_removed())

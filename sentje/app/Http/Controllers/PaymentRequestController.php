@@ -64,7 +64,7 @@ class PaymentRequestController extends Controller
         $payment_requests = $user->payment_requests();
         foreach($payment_requests as $payment_request) {
             if($payment_request->id == $id) {
-                return view('paymentrequests.show', ['payment_request' => $payment_request]);
+                return view('paymentrequests.show', ['payment_request' => $payment_request, 'payments' => $payment_request->payments()]);
             }
         }
         return redirect('payments');

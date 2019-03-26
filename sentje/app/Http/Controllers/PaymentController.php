@@ -40,7 +40,7 @@ class PaymentController extends Controller
         $currency = $request->currency;
 
         $payment = new Payment;
-        $payment->name = $name;
+        $payment->name = encrypt($name);
         $payment->payment_request_id = $request_id;
         $payment->paid = false;
         $payment->save();
