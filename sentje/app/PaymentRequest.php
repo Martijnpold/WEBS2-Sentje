@@ -9,7 +9,7 @@ class PaymentRequest extends Model
     protected $table = 'payment_requests';
 
     public function payment_account() {
-        return $this->belongsTo('App\PaymentAccount')->get();
+        return $this->belongsTo('App\PaymentAccount')->first();
     }
 
     public function payments() {

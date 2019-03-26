@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Mollie\Api\MollieApiClient;
 use Mollie\Api\Types\PaymentMethod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\PaymentAccount;
 use App\PaymentRequest;
 use App\Payment;
@@ -75,8 +76,8 @@ class PaymentController extends Controller
         $payment = Payment::where('id', $orderId)->first();
     
         if($payment != null) {
-            $request = $payment->payment_request();
-            $account = $request->payment_account();
+            $request = PaymentRequest::where('id', $payment->payment_request_id)->first();
+            $account = PaymentAccount::where('id', $request->payment_account_id)->first();
 
             $was_paid = $payment->paid;
             $payment->paid = $mollie_payment->isPaid();
@@ -84,8 +85,8 @@ class PaymentController extends Controller
 
             if ($mollie_payment->isPaid()) {
                 if(!$was_paid) {
-                    $account->balance += $request->amount;
-                    $acount->save();
+                    $account->balance = $account->balance + $request->amount;
+                    $account->save();
                 }
             }
         }
