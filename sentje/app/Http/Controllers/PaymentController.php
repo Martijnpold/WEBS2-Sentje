@@ -38,6 +38,7 @@ class PaymentController extends Controller
         if($payment_request == null) return redirect('/');
         $name = $request->name;
         $currency = $request->currency;
+        if($name == null) $name = "Anonymous";
 
         $payment = new Payment;
         $payment->name = encrypt($name);

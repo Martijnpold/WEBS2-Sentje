@@ -23,6 +23,15 @@
             </div>
 
             <br>
+
+            <div class="card">
+                <div class="card-header" style="text-align:center">Payment Link</div>
+                <div class="card-body justify-content-center">
+                    <input type="text" name="pay-link" style="text-align:center;width:100%" value="{{ url('/pay/' . $payment_request->id) }}" readonly><br>
+                </div>
+            </div>
+            <br>
+
             <div class="card">
                 <div class="card-header" style="text-align:center">Payments</div>
                 <div class="card-body">
