@@ -108,6 +108,6 @@ class PaymentRequestController extends Controller
                 $request->delete();
             }
         }
-        return redirect()->route('paymentaccounts.index');
+        return redirect()->back();
     }
 }
