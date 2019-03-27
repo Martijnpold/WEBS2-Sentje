@@ -20,7 +20,7 @@ Route::get('/home', function () {
 
 Route::resource('/payments', 'PaymentRequestController')->except([
     'edit', 'update'
-]);;
+])->middleware('auth');;;
 
 Route::name('pay.update')->post('/update_payment_status', 'PaymentController@update');
 Route::post('/update_payment_status', ['uses' => 'PaymentController@update']);
@@ -30,10 +30,10 @@ Route::resource('/pay', 'PaymentController')->only([
 
 Route::resource('/paymentaccounts', 'PaymentAccountController')->except([
     'edit', 'update'
-]);;
+])->middleware('auth');;;
 
 Route::resource('/createrequest', 'PaymentRequestController')->except([
     'edit', 'update'
-]);;
+])->middleware('auth');;;
 
 Auth::routes();
