@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Payment Requests') }}</div>
+                <div class="card-header">{{ __('sentje.Payment Requests') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -21,8 +21,8 @@
                     <table style="width:100%">
                     <tr>
                     <td>#</td>
-                    <td>{{ __('Amount') }}</td>
-                    <td>{{ __('Description') }}</td>
+                    <td>{{ __('sentje.Amount') }}</td>
+                    <td>{{ __('sentje.Description') }}</td>
                     <td></td>
                     <td></td>
                     @foreach ($payment_requests as $request)
@@ -35,11 +35,11 @@
                     <form action="{{ route('payments.destroy', $request->id) }}" method="POST">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
-                    <button>{{ __('Delete') }}</button>
+                    <button>{{ __('sentje.Delete') }}</button>
                     </form>
                     @endif
                     </td>
-                    <td><a href="{{ route('payments.show', $request->id) }}">{{ __('Details') }}</a></td>
+                    <td><a href="{{ route('payments.show', $request->id) }}">{{ __('sentje.Details') }}</a></td>
                     </tr>
                     @endforeach
                     </table>
@@ -47,7 +47,7 @@
 
                 <div class="row justify-content-center">
                     <a href="{{ route('createrequest.create') }}">
-                        <button type="submit" class="btn btn-primary">{{ __('New Request') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('sentje.New Request') }}</button>
                     </a>
                 </div>
 

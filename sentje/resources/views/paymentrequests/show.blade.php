@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="text-align:center">{{ __('Payment Request') }}</div>
+                <div class="card-header" style="text-align:center">{{ __('sentje.Payment Request') }}</div>
                 <div class="card-body">
                     <h1 style="text-align:center">{{ $payment_request->description }}</h1>
                     <h2 style="text-align:center">€ {{ $payment_request->amount }}</h2>
@@ -25,7 +25,7 @@
             <br>
 
             <div class="card">
-                <div class="card-header" style="text-align:center">{{ __('Payment Link') }}</div>
+                <div class="card-header" style="text-align:center">{{ __('sentje.Payment Link') }}</div>
                 <div class="card-body justify-content-center">
                     <input type="text" name="pay-link" style="text-align:center;width:100%" value="{{ url('/pay/' . $payment_request->id) }}" readonly><br>
                 </div>
@@ -33,13 +33,13 @@
             <br>
 
             <div class="card">
-                <div class="card-header" style="text-align:center">{{ __('Payment') }}</div>
+                <div class="card-header" style="text-align:center">{{ __('sentje.Payments') }}</div>
                 <div class="card-body">
                     <table style="width:100%">
                         <tr>
                             <td>#</td>
-                            <td>{{ __('Name') }}</td>
-                            <td>{{ __('Date') }}</td>
+                            <td>{{ __('sentje.Name') }}</td>
+                            <td>{{ __('sentje.Date') }}</td>
                         </tr>
                         @foreach ($payments as $payment)
                         @if ($payment->paid)
