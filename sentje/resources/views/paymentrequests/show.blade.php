@@ -46,7 +46,7 @@
                         <tr>
                             <td>{{ $payment->id }}</td>
                             <td>{{ $payment->name() }}</td>
-                            <td>{{ $payment->created_at }}</td>
+                            <td>{{ date(__('sentje.dateformat'), $payment->datetime()) }}</td>
                         </tr>
                         @endif
                         @endforeach
