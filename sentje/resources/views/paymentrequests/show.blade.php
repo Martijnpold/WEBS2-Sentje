@@ -12,7 +12,7 @@
                 <div class="card-header" style="text-align:center">{{ __('sentje.Payment Request') }}</div>
                 <div class="card-body">
                     <h1 style="text-align:center">{{ $payment_request->description }}</h1>
-                    <h2 style="text-align:center">€ {{ $payment_request->amount }}</h2>
+                    <h2 style="text-align:center">€ {{ number_format($payment_request->amount, 2, __('sentje.decimalformat'), __('sentje.thousandsformat')) }}</h2>
                 </div>
 
                 @if (session('status'))

@@ -44,5 +44,7 @@ return [
     'Send Password Reset Link' => 'Reset Link Versturen',
     'Confirm Password' => 'Wachtwoord Bevestigen',
     'dateformat' => 'H:i d-m-Y',
+    'decimalformat' => ',',
+    'thousandsformat' => '.',
     #'' => '',
 ];

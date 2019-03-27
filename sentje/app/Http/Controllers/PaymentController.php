@@ -46,12 +46,15 @@ class PaymentController extends Controller
         $payment->paid = false;
         $payment->save();
 
+        $amount = $payment_request->amount;
+        if($currency === 'USD') $amount *= 1.1258;
+
         $mollie = new MollieApiClient();
         $mollie->setApiKey(env('MOLLIE_KEY'));
         $mollie_payment = $mollie->payments->create([
             "amount" => [
                 "currency" => $currency,
-                "value" => number_format($payment_request->amount, 2)
+                "value" => number_format($amount, 2)
             ],
             "method" => PaymentMethod::CREDITCARD,
             "description" => "Order #{$payment->id}",

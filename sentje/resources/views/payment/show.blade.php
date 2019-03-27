@@ -19,7 +19,7 @@
                     @endif
 
                     <h1 style="text-align:center">{{ __('sentje.Payment Request') }}</h1>
-                    <h2 style="text-align:center">€ {{ $payment_request->amount }}</h2>
+                    <h2 style="text-align:center">€ {{ number_format($payment_request->amount, 2, __('sentje.decimalformat'), __('sentje.thousandsformat')) }}</h2>
                     <br>
                     <h4 style="text-align:center">{{ __('sentje.Description') }}</h4>
                     <h5 style="text-align:center">"{{ $payment_request->description }}"</h5>
