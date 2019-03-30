@@ -8,9 +8,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        <a href="{{ route('paymentaccounts.create')  }}"class ="btn btn-outline-success">Account toevoegen</a>
             <div class="card">
                 <div class="card-header">{{ __('sentje.Payment Accounts') }}</div>
-
+                
                 <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">

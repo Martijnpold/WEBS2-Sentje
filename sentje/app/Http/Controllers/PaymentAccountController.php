@@ -28,7 +28,8 @@ class PaymentAccountController extends Controller
      */
     public function create()
     {
-        //
+      
+        return view('paymentaccounts/create');
     }
 
     /**
@@ -39,7 +40,30 @@ class PaymentAccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'name' => 'required',
+                'balance' => 'required|numeric|min:0.00'
+            ]
+            );
+
+
+       $payment_account = new PaymentAccount(
+           [
+                'user_id' => Auth::user()->id,
+                'name' => $request->get('name'),
+                'balance' => $request->get('balance')
+
+           ]
+       );
+
+        if($payment_account) {
+
+            $payment_account->save();
+            return redirect('/paymentaccounts')->with('success', 'Uw account is aangemaakt');
+        }
+
+        return redirect()->back()->with('failed', 'Er is iets fout gegaan. Probeer het opnieuw!');
     }
 
     /**

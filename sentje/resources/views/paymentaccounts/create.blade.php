@@ -18,20 +18,16 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <form action="{{route('payments.store')}}" method="post">
+        <form action="{{route('paymentaccounts.store')}}" method="post">
         @csrf
-        <label>Amount</label>
-        <input type="text" name="amount" placeholder="0,00">
-    
-        <input type="hidden" name="accountId" value="{{$account->id}}">
-        
-        <input type="hidden" name="accountName" value="{{$account->name}}">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Voer jouw naam in...">
 
-        <label>Description</label>
-        <input type="text" name="description" placeholder="insert text here" >
+
+        <label>Saldo</label>
+        <input type="text" name="balance" placeholder="Voer het gewenste saldo in" >
         
         <button type="submit"> Submit </button>
-
 
         </form>
     </div>

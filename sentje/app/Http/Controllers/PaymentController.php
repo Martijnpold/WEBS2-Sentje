@@ -33,9 +33,12 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
+
+        
+        
         $request_id = $request->request_id;
         $payment_request = PaymentRequest::where('id', $request_id)->first();
-        if($payment_request == null) return redirect('/');
+        if(!$payment_request) return redirect('/');
         $name = $request->name;
         $currency = $request->currency;
         if($name == null) $name = "Anonymous";
