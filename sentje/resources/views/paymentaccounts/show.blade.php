@@ -12,7 +12,7 @@
                 <div class="card-header" style="text-align:center">{{ __('sentje.Payment Account') }}</div>
                 <div class="card-body">
                     <h1 style="text-align:center">{{ $payment_account->name }}</h1>
-                    <h2 style="text-align:center">€ {{ $payment_account->balance }}</h2>
+                    <h2 style="text-align:center">€ {{ number_format($payment_account->balance, 2, __('sentje.decimalformat'), __('sentje.thousandsformat')) }}</h2>
                 </div>
 
                 @if (session('status'))
@@ -36,7 +36,7 @@
                             @foreach ($payment_requests as $request)
                         <tr>
                             <td>{{ $request->id }}</td>
-                            <td>{{ '€ ' . $request->amount }}</td>
+                            <td>{{ '€ ' . number_format($request->amount, 2, __('sentje.decimalformat'), __('sentje.thousandsformat')) }}</td>
                             <td>{{ $request->description }}</td>
                             <td>
                                 @if ($request->can_be_removed())

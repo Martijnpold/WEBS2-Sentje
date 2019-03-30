@@ -11,6 +11,10 @@ class Payment extends Model
     public function name() {
         return decrypt($this->name);
     }
+
+    public function datetime() {
+        return strtotime($this->created_at);
+    }
     
     public function payment_request() {
         return $this->belongsTo('App\PaymentRequest')->first();

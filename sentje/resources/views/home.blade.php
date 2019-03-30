@@ -10,22 +10,7 @@
         <div class="title m-b-md" style="padding-top:150px">
             Sentje
         </div>
-
-        <div class="links">
-            <a href="https://laravel.com/docs">Documentation</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">News</a>
-            <a href="https://nova.laravel.com">Nova</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
-        </div>
-
-        <div>
-            {{ env('MOLLIE_KEY', 'NGROK_ID_NOT_FOUND') }}
-            {{ env('NGROK_ID', 'NGROK_ID_NOT_FOUND') }}
-            <a href="request.php"><button type="button" class="btn btn-primary">
-                    Pay!</button></a>
-        </div>
+        <h4></h4>
     </div>
 </div>
 @endsection

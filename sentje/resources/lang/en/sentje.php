@@ -43,5 +43,8 @@ return [
     'Reset Password' => 'Reset Password',
     'Send Password Reset Link' => 'Send Password Reset Link',
     'Confirm Password' => 'Confirm Password',
+    'dateformat' => 'H:i m-d-Y',
+    'decimalformat' => '.',
+    'thousandsformat' => ',',
     #'' => '',
 ];

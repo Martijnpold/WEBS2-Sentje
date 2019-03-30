@@ -28,7 +28,7 @@
                         <tr>
                             <td>{{ $account->id }}</td>
                             <td>{{ $account->name }}</td>
-                            <td>{{ '€ ' . number_format($account->balance, 2) }}</td>
+                            <td>{{ '€ ' . number_format($account->balance, 2, __('sentje.decimalformat'), __('sentje.thousandsformat')) }}</td>
                             <td><a href="{{ route('paymentaccounts.show', $account->id) }}">{{ __('sentje.Requests') }}</a></td>
                         </tr>
                         @endforeach
