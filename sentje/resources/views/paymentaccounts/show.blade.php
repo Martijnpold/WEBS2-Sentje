@@ -52,6 +52,11 @@
                         @endforeach
                     </table>
                 </div>
+                <div class="row justify-content-center">
+                    <a href="{{ route('payments.create') }}">
+                        <button type="submit" class="btn btn-primary">{{ __('sentje.New Request') }}</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

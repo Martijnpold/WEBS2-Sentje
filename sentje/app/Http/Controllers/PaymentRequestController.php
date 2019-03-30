@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\PaymentAccount;
 use App\PaymentRequest;
+use Mollie\Api\Exceptions\ApiException;
+use Mollie\Api\Types\PaymentMethod;
 
 class PaymentRequestController extends Controller
 {
@@ -37,7 +39,7 @@ class PaymentRequestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {        
         return view('paymentrequests.create');
     }
 
@@ -49,7 +51,36 @@ class PaymentRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        
+        $request_id = $request->request_id;
+        $payment_request = PaymentRequest::where('id', $request_id)->first();
+        if($payment_request == null) return redirect('/');
+        $name = $request->name;
+        $currency = $request->currency;
+        if($name == null) $name = "Anonymous";
+
+        $payment = new Payment;
+        $payment->name = encrypt($name);
+        $payment->payment_request_id = $request_id;
+        $payment->paid = false;
+        $payment->save();
+
+        $mollie = new MollieApiClient();
+        $mollie->setApiKey(env('MOLLIE_KEY'));
+        $mollie_payment = $mollie->payments->create([
+            "amount" => [
+                "currency" => $currency,
+                "value" => number_format($payment_request->amount, 2)
+            ],
+            "method" => PaymentMethod::CREDITCARD,
+            "description" => "Order #{$payment->id}",
+            "redirectUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io/home?order_id={$payment->id}", //replaced with the ngrok link
+            "webhookUrl" => "http://" . env('NGROK_ID', 'NGROK_ID_NOT_FOUND') . ".ngrok.io/update_payment_status", //replaced with the ngrok link
+            "metadata" => [
+            "order_id" => $payment->id,
+        ],
+        ]);
     }
 
     /**
