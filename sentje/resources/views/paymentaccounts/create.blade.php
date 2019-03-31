@@ -20,14 +20,20 @@
     <div class="row justify-content-center">
         <form action="{{route('paymentaccounts.store')}}" method="post">
         @csrf
+        <div class ="form-group">
         <label>{{ __('sentje.Name') }}</label>
-        <input type="text" name="name" placeholder="Voer jouw naam in...">
+        <input type="text" name="name" class="form-control">
+        </div>
 
 
+        <div>
         <label>{{ __('sentje.Balance') }}</label>
-        <input type="text" name="balance" placeholder="Voer het gewenste saldo in" >
-        
-        <button type="submit"> {{ __('sentje.Submit') }} </button>
+        <input type="text" name="balance" class="form-control" >
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary"> {{ __('sentje.Submit') }} </button>
 
         </form>
     </div>
