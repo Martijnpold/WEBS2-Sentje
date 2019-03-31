@@ -50,11 +50,24 @@
                             <td><a href="{{ route('payments.show', $request->id) }}">{{ __('sentje.Details') }}</a></td>
                         </tr>
                         @endforeach
+
                     </table>
                 </div>
                 <div class="row justify-content-center">
-                    <a class="btn btn-outline=warning" href="{{ route('payments.create, $payment_account->name') }}">
+<!-- 
+                                <form action="{{ route('payments.create', $payment_account->id) }}" method="POST">
+                                    
+                                    {{ csrf_field() }}
+                                    <button>{{ __('sentje.New request') }}</button>
+                                </form> -->
+                               
+                    <!-- <a class="btn btn-outline=warning" href="{{ route('payments.create', $payment_account->id) }}">
                         New request
+                    </a> -->
+
+                    <a class="btn btn-outline-success"
+                       href="{{ URL::route('create payment', ['paymentId' => $payment_account->id])}}">
+                     new request
                     </a>
                 </div>
             </div>

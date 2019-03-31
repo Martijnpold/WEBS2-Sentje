@@ -18,6 +18,8 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('startrequest/{paymentId}', 'PaymentRequestController@create')->name('create payment');
+
 Route::resource('/payments', 'PaymentRequestController')->except([
     'edit', 'update'
 ])->middleware('auth');;;

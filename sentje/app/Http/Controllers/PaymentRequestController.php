@@ -38,13 +38,19 @@ class PaymentRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($name)
-
+    public function create($id)
     {
-        dd($name);    
+     
         $user = Auth::user();
-        $account = PaymentAccount::Where('user_id', Auth::user()->id)->first();
+        $account = PaymentAccount::Where('id', $id)->first();
         return view('paymentrequests.create', compact('account'));
+
+        // $user = Auth::user();
+        // // dd($user);
+        // $payment_account = $user->payment_accounts()->where('id', $request)->first();
+        // $payment_requests = $payment_account->payment_requests();
+        // return view('paymentrequests.show', ['payment_account' => $payment_account, 'payment_requests' => $payment_requests]);
+        
     }
 
     /**
@@ -62,7 +68,7 @@ class PaymentRequestController extends Controller
             ]
             );
 
-            dd($request->get('accountId'));
+            // dd($request->get('accountId'));
 
 
        $payment_request = new PaymentRequest(

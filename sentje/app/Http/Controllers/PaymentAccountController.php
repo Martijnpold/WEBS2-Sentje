@@ -76,6 +76,7 @@ class PaymentAccountController extends Controller
     {
         $user = Auth::user();
         $payment_account = $user->payment_accounts()->where('id', $id)->first();
+        // dd($payment_account->id);
         $payment_requests = $payment_account->payment_requests();
         return view('paymentaccounts.show', ['payment_account' => $payment_account, 'payment_requests' => $payment_requests]);
     }
