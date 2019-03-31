@@ -54,20 +54,9 @@
                     </table>
                 </div>
                 <div class="row justify-content-center">
-<!-- 
-                                <form action="{{ route('payments.create', $payment_account->id) }}" method="POST">
-                                    
-                                    {{ csrf_field() }}
-                                    <button>{{ __('sentje.New request') }}</button>
-                                </form> -->
-                               
-                    <!-- <a class="btn btn-outline=warning" href="{{ route('payments.create', $payment_account->id) }}">
-                        New request
-                    </a> -->
-
                     <a class="btn btn-outline-success"
                        href="{{ URL::route('create payment', ['paymentId' => $payment_account->id])}}">
-                     new request
+                     {{ __('sentje.New Request') }}
                     </a>
                 </div>
             </div>

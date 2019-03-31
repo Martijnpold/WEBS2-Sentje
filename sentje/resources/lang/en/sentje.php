@@ -12,6 +12,8 @@ return [
     */
 
     'Account Overview' => 'Account Overview',
+    'Add Account' => 'Add Account',
+    'Submit' => 'Submit',
     'Request Overview' => 'Request overview',
     'Payment Accounts' => 'Payment Accounts',
     'Payment Account' => 'Payment Account',

@@ -34,9 +34,10 @@
                         </tr>
                         @endforeach
                     </table>
-
-                    <a href="{{ route('paymentaccounts.create')  }}"class ="btn btn-outline-success">Account toevoegen</a>
                 </div>
+                <div class="row justify-content-center">
+                    <a href="{{ route('paymentaccounts.create')  }}"class ="btn btn-outline-success">{{ __('sentje.Add Account') }}</a>
+                    </div>
             </div>
         </div>
     </div>

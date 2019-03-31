@@ -12,6 +12,8 @@ return [
     */
 
     'Account Overview' => 'Account Overzicht',
+    'Add Account' => 'Account Toevoegen',
+    'Submit' => 'Bevestig',
     'Request Overview' => 'Verzoek Overzicht',
     'Payment Accounts' => 'Betaling Accounts',
     'Payment Account' => 'Betaling Account',

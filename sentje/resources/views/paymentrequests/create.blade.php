@@ -20,17 +20,17 @@
     <div class="row justify-content-center">
         <form action="{{route('payments.store')}}" method="post">
         @csrf
-        <label>Amount</label>
+        <label>{{ __('sentje.Amount') }}</label>
         <input type="text" name="amount" placeholder="0,00">
     
         <input type="hidden" name="accountId" value="{{$account->id}}">
         
         <input type="hidden" name="accountName" value="{{$account->name}}">
 
-        <label>Description</label>
+        <label>{{ __('sentje.Description') }}</label>
         <input type="text" name="description" placeholder="insert text here" >
         
-        <button type="submit"> Submit </button>
+        <button type="submit"> {{ __('sentje.Submit') }} </button>
 
 
         </form>
