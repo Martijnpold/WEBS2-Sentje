@@ -103,8 +103,9 @@ class PaymentRequestController extends Controller
     {
         $user = Auth::user();
         $request = PaymentRequest::find($id);
-        if($request != null && $request->payment_account()->first()->user()->first()->id == $user->id) {
-            if(sizeof($request->first()->payments()) == 0) { 
+
+        if($request != null && $request->payment_account()->user()->id == $user->id) {
+            if(sizeof($request->payments()) == 0) { 
                 $request->delete();
             }
         }
