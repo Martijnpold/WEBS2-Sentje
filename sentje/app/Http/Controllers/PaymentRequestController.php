@@ -64,7 +64,7 @@ class PaymentRequestController extends Controller
         
         $request->validate(
             [
-                'amount' => 'required|numeric|between:0.01,50000.00'
+                'amount' => 'required|numeric|between:0.01,2000.00'
             ]
             );
 
