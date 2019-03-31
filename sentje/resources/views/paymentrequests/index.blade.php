@@ -35,7 +35,7 @@
                     <form action="{{ route('payments.destroy', $request->id) }}" method="POST">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
-                    <button class="btn btn-primary">{{ __('sentje.Delete') }}</button>
+                    <button>{{ __('sentje.Delete') }}</button>
                     </form>
                     @endif
                     </td>

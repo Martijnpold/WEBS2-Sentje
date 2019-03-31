@@ -38,7 +38,7 @@
                             <td>{{ $request->id }}</td>
                             <td>{{ '€ ' . number_format($request->amount, 2, __('sentje.decimalformat'), __('sentje.thousandsformat')) }}</td>
                             <td>{{ $request->description }}</td>
-                            <td>
+                            <td style='text-align:center'>
                                 @if ($request->can_be_removed())
                                 <form action="{{ route('payments.destroy', $request->id) }}" method="POST">
                                     {{ method_field('DELETE') }}
