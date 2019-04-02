@@ -31,8 +31,6 @@
                             <td>{{ $account->id }}</td>
                             <td>{{ $account->name }}</td>
                             <td>{{ '€ ' . number_format($account->balance, 2, __('sentje.decimalformat'), __('sentje.thousandsformat')) }}</td>
-                            <td><a href="{{ route('paymentaccounts.show', $account->id) }}">{{ __('sentje.Requests') }}</a></td>
-                            
                             <td style='text-align:center'>
                             <form action="{{ route('paymentaccounts.destroy', $account->id) }}" method="POST">
                             {{ method_field('DELETE') }}
@@ -40,13 +38,14 @@
                             <button>{{ __('sentje.Delete') }}</button>
                             </form>
                             </td>
+                            <td><a href="{{ route('paymentaccounts.show', $account->id) }}">{{ __('sentje.Requests') }}</a></td>
                         </tr>
                         @endforeach
                     </table>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" style="margin-bottom:10px">
                     <a href="{{ route('paymentaccounts.create')  }}"class ="btn btn-outline-success">{{ __('sentje.Add Account') }}</a>
-                    </div>
+                </div>
             </div>
         </div>
     </div>

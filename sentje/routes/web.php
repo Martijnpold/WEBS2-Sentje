@@ -34,4 +34,6 @@ Route::resource('/paymentaccounts', 'PaymentAccountController')->except([
     'edit', 'update'
 ])->middleware('auth');;;
 
+Route::get('switchlang', 'LangController@switch')->name('switchlang');
+
 Auth::routes();

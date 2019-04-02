@@ -46,6 +46,13 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item" style="width:50px">
+                            <a href="{{ route('switchlang') }}">
+                                <img style="height:39px;width:39px" src="/img/lang_{{ Session::get('lang', 'en') }}.png">
+                            </a>
+                        </li>
+
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
