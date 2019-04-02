@@ -83,7 +83,7 @@ class PaymentRequestController extends Controller
         if($payment_request) {
 
             $payment_request->save();
-            return redirect('/paymentaccounts')->with('success', 'Uw betaalverzoek is aangemaakt');
+            return redirect('/payments')->with('success', 'Uw betaalverzoek is aangemaakt');
         }
 
         return redirect()->back()->with('failed', 'Er is iets fout gegaan. Probeer het opnieuw!');

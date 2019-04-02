@@ -17,7 +17,7 @@ class CreatePaymentrequestsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('payment_account_id');
             $table->decimal('amount');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
         
