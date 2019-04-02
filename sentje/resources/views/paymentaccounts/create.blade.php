@@ -26,9 +26,8 @@
         </div>
 
 
-        <div>
-        <label>{{ __('sentje.Balance') }}</label>
-        <input type="text" name="balance" class="form-control" >
+        <div type="hidden">
+        <input type="hidden" name="balance" value="0">
         </div>
 
         <br>

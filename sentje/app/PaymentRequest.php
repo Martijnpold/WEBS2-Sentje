@@ -8,7 +8,7 @@ class PaymentRequest extends Model
 {
     protected $table = 'payment_requests';
 
-    protected $fillable = ['payment_account_id', 'amount', 'mollieId', 'description'];
+    protected $fillable = ['payment_account_id', 'amount', 'description'];
 
     public $timestamps = true;
 
