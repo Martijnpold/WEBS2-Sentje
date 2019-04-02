@@ -112,6 +112,17 @@ class PaymentAccountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $user = Auth::user();
+        
+        $payment_account = PaymentAccount::find($id);
+        
+        if($payment_account != null && $payment_account->user()->id == $user->id) {
+            
+                $payment_account->delete();
+            
+        }
+        
+        return redirect()->back();
     }
 }

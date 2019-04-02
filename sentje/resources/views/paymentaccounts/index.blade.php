@@ -25,12 +25,21 @@
                             <td>{{ __('sentje.Name') }}</td>
                             <td>{{ __('sentje.Balance') }}</td>
                             <td></td>
+                            <td></td>
                             @foreach ($payment_accounts as $account)
                         <tr>
                             <td>{{ $account->id }}</td>
                             <td>{{ $account->name }}</td>
                             <td>{{ '€ ' . number_format($account->balance, 2, __('sentje.decimalformat'), __('sentje.thousandsformat')) }}</td>
                             <td><a href="{{ route('paymentaccounts.show', $account->id) }}">{{ __('sentje.Requests') }}</a></td>
+                            
+                            <td style='text-align:center'>
+                            <form action="{{ route('paymentaccounts.destroy', $account->id) }}" method="POST">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <button>{{ __('sentje.Delete') }}</button>
+                            </form>
+                            </td>
                         </tr>
                         @endforeach
                     </table>

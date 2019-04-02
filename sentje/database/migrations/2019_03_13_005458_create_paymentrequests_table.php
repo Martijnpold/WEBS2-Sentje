@@ -22,7 +22,7 @@ class CreatePaymentrequestsTable extends Migration
         });
         
         Schema::table('payment_requests', function($table) {
-            $table->foreign('payment_account_id')->references('id')->on('payment_accounts');
+            $table->foreign('payment_account_id')->references('id')->on('payment_accounts')->onDelete('cascade');;
         });
     }
 
